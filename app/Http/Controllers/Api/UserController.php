@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\PostResource;
+
 use App\Models\User;
 use App\Models\Post;
 
@@ -50,12 +52,8 @@ class UserController extends Controller
 
             $Post->save();
 
-            $content = array(
-                'success' => true,
-                'data' => $Post,
-          
-            );
-
+         
+            return new PostResource($Post);
             return response($content)->setStatusCode(200);
         } catch (\Exception $e) {
             $content = array(
