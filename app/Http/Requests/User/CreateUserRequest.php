@@ -27,6 +27,14 @@ class CreateUserRequest extends FormRequest
                'name' => 'required',
                'email' => 'required',
                'password' => 'required',
+               'first_name'=> 'required',
+               'last_name'=>'required',
+               'gender'=>'required',
+               'address'=>'required',
+               'city'=>'required',
+               'state'=>'required',
+               'zip_code'=>'required',
+              
            ];
     }
 }

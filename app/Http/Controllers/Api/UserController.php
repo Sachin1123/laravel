@@ -15,43 +15,45 @@ use Laravel\Passport\HasApiTokens;
 class UserController extends Controller
 {
   
-    public function getUser(){
+    public function getUser()
+    {
         return new UserResource(User::all());
     }
 
     public function getUserId($id){
         $user = user::find($id);
-         return new UserResource($user);
+        return new UserResource($user);
     }
 
   
     public function createUser(CreateUserRequest $request)
-    {
-      
-    try 
-    {
-        $data = $request->all();
-        $user = new User();
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-        $user->password =bcrypt($data['password']);
-        $user->save();
-        $token = $user->createToken('LaravelAuthApp')->accessToken;
-        $user->token = $token;
-        return new TokenResource($user);
-    } 
-    catch (\Exception $e) {
-        $content = array(
-        'success' => false,
-        'message' => 'There was an error while processing your request: ' .
-        $e->getMessage()
-        );
-        return response($content)->setStatusCode(500);
-    }
+    {   
+        try 
+        {
+            $data = $request->all();
+            $user = new User();
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password =bcrypt($data['password']);
+            $user->save();
+            $token = $user->createToken('LaravelAuthApp')->accessToken;
+            $user->token = $token;
+            return new TokenResource($user);
+        } 
+        catch (\Exception $e) 
+        {
+            $content = array(
+            'success' => false,
+            'message' => 'There was an error while processing your request: ' .
+            $e->getMessage()
+            );
+            return response($content)->setStatusCode(500);
+        }
+
     }
 
-      public function updateUser(Request $request)
-      {
+    public function updateUser(Request $request)
+    {
         
         if(auth()->user()){
       
@@ -71,17 +73,17 @@ class UserController extends Controller
             $user->state = $request->state ?? $user->state;
             $user->country = $request->country ?? $user->country;
             $user->save();
-             return new UserResource($user);
+            return new UserResource($user);
        
-     }
+        }
   
     }
 
 
 
-public function login(CreateUserRequest $request)
+    public function login(CreateUserRequest $request)
     {
-       $data = $request->all();     
+        $data = $request->all();     
         $data = [
             'email' => $request->email,
             'password' => $request->password
