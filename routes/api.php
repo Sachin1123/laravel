@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\EventController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,5 +19,21 @@ use App\Http\Controllers\Api\UserController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:sanctum')->post('/update', [UserController::class, 'updateUser']);
+
 Route::get('user', [UserController::class, 'getUser']);
-Route::post('post', [UserController::class, 'storePost']);
+Route::get('user/{id}', [UserController::class, 'getUserId']);
+Route::post('create', [UserController::class, 'createUser']);
+
+Route::post('login', [UserController::class, 'Login']);
+
+// Post Controller
+Route::get('post', [PostController::class, 'getPost']);
+Route::post('storepost', [PostController::class, 'storePost']);
+Route::get('post/{id}', [PostController::class, 'getPostId']);
+
+// Event Controller
+Route::get('event', [EventController::class, 'getEvent']);
+Route::get('event/{id}', [EventController::class, 'getEventId']);
+Route::post('eventcreate', [EventController::class, 'createEvent']);

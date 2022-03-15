@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
-use App\Http\Resources\PostResource;
-
+use App\Http\Requests\User\CreateUserRequest;
 use App\Models\User;
-use App\Models\Post;
-
+use Auth;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Passport\HasApiTokens;
+
 class UserController extends Controller
 {
   
@@ -18,52 +17,106 @@ class UserController extends Controller
         return new UserResource(User::all());
     }
 
-    public function storePost(Request $request){
-       
-        $data = $request->all();
-
-        $validator = \Validator::make($request->all(), [
-            'title' => 'required',
-                'image' => 'required',
-                'gallery' => 'required',
-                'description' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-           return response()->json($validator->errors(), 422);
-        }
-        try {
- 
-            if(!empty($data['gallery'])){
-                $imageName = time().'.'.$request->gallery->extension();  
-                $request->gallery->move(public_path('images'), $imageName);
-                $imgPath='/images/'.$imageName;
-            }
-            if(!empty($data['image'])){
-                $imageName = time().'.'.$request->image->extension();  
-               $request->image->move(public_path('images'), $imageName);
-               $GalleryPath='/images/'.$imageName;
-            }
-            $Post = new Post();
-            $Post->title = $data['title'];
-            $Post->description = $data['description'];
-            $Post->gallery = $GalleryPath;
-            $Post->image = $imgPath;
-
-            $Post->save();
-
-         
-            return new PostResource($Post);
-            return response($content)->setStatusCode(200);
-        } catch (\Exception $e) {
-            $content = array(
-                'success' => false,
-                'data' => 'something went wrong.',
-                'message' => 'There was an error while processing your request: ' .
-                    $e->getMessage()
-            );
-            return response($content)->setStatusCode(500);
-        }
-        
+    public function getUserId($id){
+        $user = user::find($id);
+         return new UserResource($user);
     }
+
+  
+    public function createUser(CreateUserRequest $request)
+    {
+      
+    try 
+    {
+        $data = $request->all();
+        $User = new User();
+        $User->name = $data['name'];
+        $User->email = $data['email'];
+        $User->password =bcrypt($data['password']);
+        $User->save();
+        return new UserResource($User);
+    } 
+    catch (\Exception $e) {
+        $content = array(
+        'success' => false,
+        'data' => 'something went wrong.',
+        'message' => 'There was an error while processing your request: ' .
+        $e->getMessage()
+        );
+            return response($content)->setStatusCode(500);
+    }
+    }
+
+      public function updateUser(Request $request)
+      {
+        
+        print_r('auth()->user()');die;
+        $data = $request->all();     
+        try {
+            $data = [
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+        ];
+        $userProfile = User::where('id', Auth::id())->update($data);
+        print_r(Auth::id()); die;
+        return new UserResource($data);
+        }
+        catch (\Exception $e) {
+        $content = array(
+            'success' => false,
+            'data' => 'something went wrong.',
+            'message' => 'There was an error while processing your request: ' .
+            $e->getMessage()
+        );
+        return response($content)->setStatusCode(500);
+            
+        }}
+
+
+
+        public function Login(CreateUserRequest $request)
+    {
+       $data = $request->all();     
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+
+        if (auth()->attempt($data))
+        {
+            $user = auth()->user();
+            $token = $user->createToken('MyApp')->accessToken;
+            // print_r($token); die;
+            return response()->json(['success' => false, 'message' => $token->token ]);
+            $user = auth()->user();
+            $user->token = $token;
+            return new UserResource($user);
+        } else
+        {
+            $data = User::Where('email', $request->email)->first();
+            if (!$data)
+            {
+                return response()->json(['success' => false, 'message' => "User Doesn't Exists. Please Sign Up"], 400);
+            } else
+            {
+                return response()->json(['success' => false, 'message' => "Password is incorrect. Try Again!"], 400);
+            }
+        }
+    }
+        
+           
+      
+        
+    
+    
+
+   
+
+   
+     
+  
+
+    
+
 }
