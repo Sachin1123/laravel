@@ -53,11 +53,11 @@ class UserController extends Controller
       public function updateUser(Request $request)
       {
         
-     if(auth()->user()){
+        if(auth()->user()){
       
             $user=auth()->user();
             $user->name = $request->name ??  $user->name ;
-
+            $user->email = $request->email ??  $user->email ; 
             if (!empty($request->password))
             {
                 $user->password = bcrypt($request->password);
@@ -79,7 +79,7 @@ class UserController extends Controller
 
 
 
-public function Login(CreateUserRequest $request)
+public function login(CreateUserRequest $request)
     {
        $data = $request->all();     
         $data = [

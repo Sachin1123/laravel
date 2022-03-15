@@ -26,7 +26,7 @@ Route::get('user', [UserController::class, 'getUser']);
 Route::get('user/{id}', [UserController::class, 'getUserId']);
 Route::post('create', [UserController::class, 'createUser']);
 
-Route::post('login', [UserController::class, 'Login']);
+Route::post('login', [UserController::class, 'login']);
 
 // Post Controller
 Route::get('post', [PostController::class, 'getPost']);
