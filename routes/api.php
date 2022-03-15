@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->post('/update', [UserController::class, 'updateUser']);
+Route::middleware('auth:api')->post('/update', [UserController::class, 'updateUser']);
 
 Route::get('user', [UserController::class, 'getUser']);
 Route::get('user/{id}', [UserController::class, 'getUserId']);
