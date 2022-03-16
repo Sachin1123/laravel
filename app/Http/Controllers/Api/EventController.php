@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Resources\EventResource;
 use App\Models\Event;
 use App\Http\Requests\User\CreateEventRequest;
+use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,7 +37,24 @@ class EventController extends Controller
                   
     } 
 
+
+public function store(StoreEventRequest $request)
+{
+    Event::create($request->all());
+    return redirect()->route('admin.systemCalendar');
+}
+
+public function update(UpdateEventRequest $request, Event $event)
+{
+    $event->update($request->all());
+    return redirect()->route('admin.systemCalendar');
+}
       
-    
+
+public function boot()
+{
+    Event::observe(RecurrenceObserver::class);
+}
+
 
 }

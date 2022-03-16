@@ -19,4 +19,14 @@ class Event extends Model
         'images',
       
     ];
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'events_id', 'id');
+    }
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class, 'events_id');
+    }
 }

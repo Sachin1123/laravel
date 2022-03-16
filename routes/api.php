@@ -37,3 +37,5 @@ Route::get('post/{id}', [PostController::class, 'getPostId']);
 Route::get('event', [EventController::class, 'getEvent']);
 Route::get('event/{id}', [EventController::class, 'getEventId']);
 Route::post('eventcreate', [EventController::class, 'createEvent']);
+
+Route::apiResource('events', 'EventController');
