@@ -57,7 +57,7 @@ class PostController extends Controller
 
     public function getPostId($id){
         $post = post::find($id);
-         return new PostResource($post);
+        return new PostResource($post);
     }
 
 

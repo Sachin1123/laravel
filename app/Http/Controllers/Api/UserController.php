@@ -83,6 +83,7 @@ class UserController extends Controller
 
     public function login(CreateUserRequest $request)
     {
+        
         $data = $request->all();     
         $data = [
             'email' => $request->email,

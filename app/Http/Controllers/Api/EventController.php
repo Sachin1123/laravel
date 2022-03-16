@@ -9,6 +9,8 @@ use App\Models\Event;
 use App\Http\Requests\User\CreateEventRequest;
 use Auth;
 use Illuminate\Support\Facades\Validator;
+
+
 class EventController extends Controller
 {
     //
