@@ -32,29 +32,16 @@ class EventController extends Controller
     public function createEvent(CreateEventRequest $request){
         
         $data= $request->all();
+        
         $userEvent = Event::create($data);
+        
         return new EventResource($data);
                   
     } 
 
 
-public function store(StoreEventRequest $request)
-{
-    Event::create($request->all());
-    return redirect()->route('admin.systemCalendar');
-}
 
-public function update(UpdateEventRequest $request, Event $event)
-{
-    $event->update($request->all());
-    return redirect()->route('admin.systemCalendar');
-}
-      
 
-public function boot()
-{
-    Event::observe(RecurrenceObserver::class);
-}
 
 
 }

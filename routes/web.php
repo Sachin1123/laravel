@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GoogleCalendarController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +19,4 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/google-calendar/connect', [GoogleCalendarController::class, 'connect']);
-Route::post('/google-calendar/connect', [GoogleCalendarController::class, 'store']);
-Route::get('get-resource', [GoogleCalendarController::class, 'getResource']);
