@@ -4,7 +4,7 @@
 <div class="card">
 <div class="card-body">
     <h4 class="card-title"> Event </h4>
-    <form action="eventcreate.store" enctype="multipart/form-data" method="POST">
+    <form action="{{(eventcreate.store)}}" enctype="multipart/form-data" method="POST">
    
         @csrf
         <label for="name"> Description</label>
