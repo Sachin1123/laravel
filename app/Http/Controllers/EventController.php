@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -18,23 +18,13 @@ class EventController extends Controller
     //
 
 
-    public function getEvent(){
-        return new EventResource(Event::all());
-    }
 
-    public function getEventId($id){
-        $event = event::find($id);
-        return new EventResource($event);
-   
-    }
-
-
-    public function createEvent(CreateEventRequest $request){
-        
+    public function event(Request $request){
+        die('here');
         $data= $request->all();
         
         $userEvent = Event::create($data);
-        
+        echo "<pre>"; print_r($userEvent); die;
         return new EventResource($data);
                   
     } 
