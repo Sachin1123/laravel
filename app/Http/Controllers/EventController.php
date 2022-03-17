@@ -20,12 +20,12 @@ class EventController extends Controller
 
 
     public function event(Request $request){
-        die('here');
+      
         $data= $request->all();
         
         $userEvent = Event::create($data);
-        echo "<pre>"; print_r($userEvent); die;
-        return new EventResource($data);
+        // echo "<pre>"; print_r($userEvent); die;
+        // return new EventResource($data);
                   
     } 
 

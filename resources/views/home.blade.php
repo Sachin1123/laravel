@@ -2,12 +2,11 @@
 
 @section('content')
 
-<div class="card">
++<div class="card">
 <div class="card-body">
     <h4 class="card-title"> Event </h4>
-    <form action="{{(eventcreate.store)}}"  method="POST">
-
-
+    <form action="{{route('event')}}"  method="POST">
+   
         @csrf
         <label for="name"> Description</label>
         <br>
@@ -22,8 +21,8 @@
        <input type='date'  name='end_date'>
        </br>
        <input type='submit'  value='Submit'>
-
     </form>
 </div>
 </div>
 @endsection
+
