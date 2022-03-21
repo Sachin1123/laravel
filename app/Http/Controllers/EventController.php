@@ -30,9 +30,9 @@ class EventController extends Controller
         
             $event->name=$request->input('name');
 
-            $event->start_date = $request->input('start_date');
+            $event->startDateTime = $request->input('start_date');
             
-            $event->end_date =$request->input('end_date');
+            $event->endDateTime =$request->input('end_date');
          
              // dd($event); 
             $event->save();
