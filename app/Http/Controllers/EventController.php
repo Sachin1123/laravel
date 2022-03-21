@@ -12,8 +12,8 @@ use App\Http\Requests\UpdateEventRequest;
 use Auth;
 use Spatie\GoogleCalendar\Event;
 use Illuminate\Support\Facades\Validator;
-
-
+use Carbon\CarbonInterface;
+use DateTime;
 use Calendar;
 use Carbon\Carbon;
 
@@ -25,18 +25,23 @@ class EventController extends Controller
 
     public function event(Request $request ){
       
-       
-            $event = new Event;
+      
+            $event = new Events;
         
             $event->name=$request->input('name');
-            $event->startDateTime = $request->input('start_date');
-            $event->endDateTime =$request->input('end_date');
-            $event->save();
-            $e=Event::get();
 
+            $event->start_date = $request->input('start_date');
+            
+            $event->end_date =$request->input('end_date');
+         
+             // dd($event); 
+            $event->save();
+            $e=Events::get();
+            // dd($e); 
            
       
             $startTime=Carbon::parse($request->input('start_date').' '.$request->input('start_time'));
+          
             $endTime=(clone $startTime)->addHours();
             Events::create([
             'name'=>$request->input('name'),
