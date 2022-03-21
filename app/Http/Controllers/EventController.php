@@ -26,7 +26,7 @@ class EventController extends Controller
     public function event(Request $request ){
       
       
-            $event = new Events;
+            $event = new Event;
         
             $event->name=$request->input('name');
 
@@ -36,7 +36,7 @@ class EventController extends Controller
          
              // dd($event); 
             $event->save();
-            $e=Events::get();
+            $e=Event::get();
             // dd($e); 
            
       
