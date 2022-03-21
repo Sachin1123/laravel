@@ -3969,16 +3969,16 @@
         },
         {
             "name": "spatie/laravel-google-calendar",
-            "version": "3.5.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-google-calendar.git",
-                "reference": "b5e9e497c1fc6be5a4a2bb18ddf53b6c711648f7"
+                "reference": "113dba30c70705790ba1ae1e726307d2dc1d12c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-google-calendar/zipball/b5e9e497c1fc6be5a4a2bb18ddf53b6c711648f7",
-                "reference": "b5e9e497c1fc6be5a4a2bb18ddf53b6c711648f7",
+                "url": "https://api.github.com/repos/spatie/laravel-google-calendar/zipball/113dba30c70705790ba1ae1e726307d2dc1d12c6",
+                "reference": "113dba30c70705790ba1ae1e726307d2dc1d12c6",
                 "shasum": ""
             },
             "require": {
@@ -4032,7 +4032,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-google-calendar/issues",
-                "source": "https://github.com/spatie/laravel-google-calendar/tree/3.5.0"
+                "source": "https://github.com/spatie/laravel-google-calendar/tree/3.5.1"
             },
             "funding": [
                 {
@@ -4040,7 +4040,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-01-13T09:43:27+00:00"
+            "time": "2022-03-18T07:43:44+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

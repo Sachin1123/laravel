@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sound-chalice-344305",
+  "private_key_id": "2be19766fbc0105d31c7225fd1e12dc77ca64720",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCSyJO71LmwDZ3z\n3NRBV4fSSzAaxMIKUhOAfshAOgAfFemtcIta+4irymj0E5FQ+u4T3vGjGm6q4bQZ\nqikFHTZDhfTY0K8q4rPodHsQucwmSpuyFApoX7850YkdYLMLBUpBNXimUz6N8W9h\ndT4cSiL4BrwBt2HSs+AdYRwQpaFFb9dBsmx26p+WuyRUVo9aClVk1AzPKRoaRxIv\n/uhW7t+dxyl/zfAjg/D3URSUWs13sfl61HpAKezWv0UpISMyCfiV9eYrN3qpU1F9\nUkkPZaI7Z45qDbbamnXrWH92CX8WuuGLEkaZEexxh/npST32daboF25lX8nibOBc\ntvzO/ZadAgMBAAECggEAIcxarCTy7tVr2fOu0i7oAOW8OWW18m9suyk2Tges8Ht4\nt62TAQurMDdmzFDXJKjq+htbU32qHuHiuQgj8uADly+4rdX7h6n02CE+Fx9ZITYL\nvMj9joQBgbw8UM3r3C1HKFW6Jr5DSKbfyTaYayYtACR41QJXXY96mvk536FrzZN2\nWhC/rXgfhWwWhGG2rJt1CP+AS9wJN3067gNS7YLRt64FNucV7dmKZgClHAqg++sl\nBuWqRaIsdGt9jMGVvQ5svsLyubqqiVfj1Y5pV+HgoeWWH9SVqcqeKg399bgD2uCj\nR50XUfIA3KxeC9bCpqRSBy4ZR+ZDCaWad7SpmxTlcQKBgQDFKXJcRvLDWchQnz5o\nLTqkXoWXjUgEWZ55btE+Tux/upw+OUndOWdnvAerVVmtoDcvPJnaxibZPm6ATtdI\nqqhM5u/sy5zDleJ+B9odW3kNkWU3uHTVzverdCbyLP1vBTkX1yxwMzlBoWvDSNB3\nU29owZ2nu9lAmJWqXyEwaW8gpQKBgQC+lmDTYAXj1C798MmxLss8Z3o6vcXBEPfy\n2z+Lqv+LztlONm/n+pnunA8YKXj+aaiyRZRrskrEKHH8UDaxSUOP9fkqkSRZwUz+\njsAkvhLTlqyxpjpAkthfmJF1m6nsRodxXYJcIH2hqonxfmb42Cg4K50dBOLZQoBP\nKzm1+WaEmQKBgQCkL8+8aJjhdXMLMJGXz5J2LwCxJEZE2RzPoyk86hyogY57gtmw\nEI28JSl91KXJoRJTk/PL7BeN8h+zWfSN3xAoemhymV0Cw17J9V/98p7sXZgcvs8M\n/j3h2ehU5IJoYcEZyWaISR/1N6e2CH0R4bl1U0cm15gj4u0/49iPqD2SwQKBgQCj\ncL50RqKGcM4jw7yTj/eGQ48UlO3j1bNstwzVr70anjbI1fI91DDx6S8gn2A9fUrI\nJtdTTEDF25F0uS1N9/BSorQdBv9PYW+v1ad9Wus2PL64Uj8eZU/dGy+S1f1wvEMm\nuvQyIULbwy4sxSN1P5muIejInAoWGuuB+SWyosCB8QKBgF/JZvuR7ub61e+5XpTP\nd45ZWg8tiQKJRXaNXV7nQk/aZ20rZrb4UH/2cAcsSt+6oJZ555ZnZ+43gb9H4d/v\ntc9He2ngSCZRAyW6ODy1o1eZKbcHIXOXEtKgbQZVU1QCfc9gzcBtfGki2bTl0AsD\nLTOsK8Hc3hOZ6Cm9ZUeqjIkI\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-calendar-api@sound-chalice-344305.iam.gserviceaccount.com",
+  "client_id": "105973990793752781240",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-calendar-api%40sound-chalice-344305.iam.gserviceaccount.com"
+}

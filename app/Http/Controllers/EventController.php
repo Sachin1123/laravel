@@ -13,6 +13,9 @@ use Auth;
 use Illuminate\Support\Facades\Validator;
 
 
+use Calendar;
+use Carbon\Carbon;
+
 class EventController extends Controller
 {
     //
@@ -21,17 +24,31 @@ class EventController extends Controller
 
     public function event(Request $request){
       
-        $data= $request->all();
-        
-        $userEvent = Event::create($data);
-        // echo "<pre>"; print_r($userEvent); die;
-        // return new EventResource($data);
-                  
+        // $events = [];
+        // $data = Event::get();
+        // echo'<pre>';  print_r($data); die; 
+        // $event->startDateTime = Carbon\Carbon::now();
+            $startTime=Carbon::parse($request->input('start_date').' '.$request->input('start_time'));
+            $endTime=(clone $startTime)->addHours();
+            Event::create([
+            'name'=>$request->input('name'),
+            'start_date'=>$request->input('start_date'),
+            'description'=>$request->input('description'),
+            'start_time'=>$request->input('start_time'),
+            'end_time'=>$request->input('end_time'),
+            
+            'end_date'=>$request->input('end_date'),
+            ]);
+            return redirect()->back()->withMessage('Event Booked');
+
     } 
 
 
 
-
-
-
 }
+  
+
+
+
+
+
