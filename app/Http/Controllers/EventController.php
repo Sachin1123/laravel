@@ -30,9 +30,9 @@ class EventController extends Controller
         
             $event->name=$request->input('name');
 
-            $event->startDateTime = $request->input('start_date');
+            $event->startDateTime = $request->input('start_date') ?? Carbon\Carbon::now();
             
-            $event->endDateTime =$request->input('end_date');
+            $event->endDateTime =$request->input('end_date') ?? Carbon\Carbon::now()->addHour();
          
              // dd($event); 
             $event->save();
