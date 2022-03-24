@@ -1,13 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
-<<<<<<< HEAD
-
-use Illuminate\Http\Request;
-=======
 use \Debugbar;
->>>>>>> public
 use App\Http\Resources\EventResource;
 use App\Models\Events;
 use App\Http\Requests\User\CreateEventRequest;
@@ -20,50 +13,6 @@ use Carbon\CarbonInterface;
 use DateTime;
 use Calendar;
 use Carbon\Carbon;
-<<<<<<< HEAD
-
-class EventController extends Controller
-{
-    //
-
-
-
-    public function event(Request $request ){
-      
-      
-            $event = new Event;
-        
-            $event->name=$request->input('name');
-
-            $event->startDateTime = $request->input('start_date') ?? Carbon\Carbon::now();
-            
-            $event->endDateTime =$request->input('end_date') ?? Carbon\Carbon::now()->addHour();
-         
-             // dd($event); 
-            $event->save();
-            $e=Event::get();
-            // dd($e); 
-           
-      
-            $startTime=Carbon::parse($request->input('start_date').' '.$request->input('start_time'));
-          
-            $endTime=(clone $startTime)->addHours();
-            Events::create([
-            'name'=>$request->input('name'),
-            'start_date'=>$request->input('start_date'),
-            'description'=>$request->input('description'),
-            'start_time'=>$request->input('start_time'),
-            'end_time'=>$request->input('end_time'),
-            
-            'end_date'=>$request->input('end_date'),
-            ]);
-            return redirect()->back()->withMessage('Event Booked');
-
-    } 
-
-
-
-=======
 use Illuminate\Http\Request;
 use Redirect,Response;
 class EventController extends Controller
@@ -125,7 +74,7 @@ class EventController extends Controller
         }
     }
     
->>>>>>> public
+
 }
   
 
