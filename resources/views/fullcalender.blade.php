@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-@extends('layouts.app')
-
-@section('content')
-
-+<div class="card">
-<div class="card-body">
-    <h4 class="card-title"> Event </h4>
-    <form action="{{route('event')}}"  method="POST">
-   
-        @csrf
-        <label for="name"> Description</label>
-        <br>
-        <textarea  name="name" id='description'cols="50" row="3"></textarea>
-       </br>
-       <br>
-       <label for="start_time"> Start Date</label>
-       <input type='date'  name='start_date'>
-       </br>
-       <br>
-       <label for="end_time">End Date</label>
-       <input type='date'  name='end_date'>
-       </br>
-       <input type='submit'  value='Submit'>
-    </form>
-</div>
-</div>
-@endsection
-
-=======
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,94 +22,71 @@
    
 <script>
 $(document).ready(function () {
- 
    
 var SITEURL = "{{ url('/') }}";
   
 $.ajaxSetup({
-    
     headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
 
-
-
 var calendar = $('#calendar').fullCalendar({
-    header: {
-      left: 'prev,next today',
-      center: 'description',
-      right: 'month,agendaWeek,agendaDay,listWeek',
-    },
-  
-                    editable: true,                   
-                    events:  "/fullcalender",
-                    displayEventTime: true,
-                  
+                    editable: true,
+                   
+                    events: SITEURL + "/fullcalender",
+                    displayEventTime: false,
+                    editable: true,
                     eventRender: function (event, element, view) {
                         if (event.allDay === 'true') {
                                 event.allDay = true;
                         } else {
                                 event.allDay = false;
                         }
-                        element.find('.fc-title').append("<br/>" + event.description);
-                        // console.log(event);
-                        
                     },
                     selectable: true,
                     selectHelper: true,
                     select: function (start, end, allDay) {
-                        var description = prompt('Event Title:');
-                      
+                        var description = prompt('Event Title:');    
+                               
                         if (description) {
-                           
                             var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
-                            var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
-                           
+                            var end= $.fullCalendar.formatDate(end, "Y-MM-DD");
                             $.ajax({
-                                url: SITEURL + "/fullcalenderAjax",
+                                url: SITEURL + "/home",
                                 data: {
                                     description: description,
-                                    start_date: start,
-                                    end_date: end,
+                                    users_id:users_id,
+                                    start: start,
+                                    end: end,
                                     type: 'add'
-                                   
                                 },
                                 
                                 type: "POST",
                                 success: function (data) {
-                                displayMessage("Event Created Successfully");
-                            
-                                    calendar.fullCalendar('renderEvent',
-                                        {
-                                            id: data.id,
-                                            description: description,
-                                            start: start,
-                                            end: end,
-                                            allDay: allDay
-                                        },true);
-  
-                                    calendar.fullCalendar('unselect');
+                                  
+                                    displayMessage("Event Created Successfully");
+
+                                
                                 }
                             });
-                            
                         }
+                      
                     },
                     eventDrop: function (event, delta) {
-                        var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-                        var end= $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+                        var start_date = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+                        var end_date = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
   
                         $.ajax({
-                            url: SITEURL + '/fullcalenderAjax',
+                            url: SITEURL + '/home',
                             data: {
                                 description: event.description,
                                 start: start,
                                 end: end,
+                                users_id:users_id,
                                 id: event.id,
                                 type: 'update'
                             },
-                           
                             type: "POST",
                             success: function (response) {
                                 displayMessage("Event Updated Successfully");
@@ -151,7 +98,7 @@ var calendar = $('#calendar').fullCalendar({
                         if (deleteMsg) {
                             $.ajax({
                                 type: "POST",
-                                url: SITEURL + '/fullcalenderAjax',
+                                url: SITEURL + '/home',
                                 data: {
                                         id: event.id,
                                         type: 'delete'
@@ -170,9 +117,7 @@ var calendar = $('#calendar').fullCalendar({
  
 function displayMessage(message) {
     toastr.success(message, 'Events');
-    
 } 
  
+
 </script>
-  
->>>>>>> public

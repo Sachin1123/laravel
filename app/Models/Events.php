@@ -14,6 +14,7 @@ class Events extends Model
         'description',
         'start_time',
         'end_time',
+        'users_id',
         'time_meridiem',
         'start_date',
         'end_date',

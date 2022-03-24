@@ -1,7 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
 <div class="container">
+=======
+<style>
+    
+ .register-form {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-header {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.register-form input[type="password"], .register-form input[type="email"] {
+    height: 25px;
+    width: 100%;
+}
+.register-form button {
+    width: 100%;
+    height: 30px;
+    background: #5bcaff;
+    color: #fff;
+    border: 0px;
+} 
+</style>
+<div class="container register-form ">
+>>>>>>> public
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
