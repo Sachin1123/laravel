@@ -11,13 +11,13 @@ class Events extends Model
     protected $table = 'events';
     protected $fillable = [
         'name',
-        'description',
+        'title',
         'start_time',
         'end_time',
         'users_id',
         'time_meridiem',
-        'start_date',
-        'end_date',
+        'start',
+        'end',
         'images',
       
     ];

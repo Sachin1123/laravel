@@ -18,20 +18,20 @@ class EventController extends Controller
 {
 
 
+
     public function index(Request $request)
     {
-   
-        $data = Events::all(); 
-        // echo'<pre>'; print_r($event); die;     
-        {      
-            $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
-            $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');   
-            $data = Events::whereDate('start_date', '>=', $start)->whereDate('end_date',   '<=', $end)->get(['id','description','start_date', 'end_date']);
-            return response()->json($data);
-        } 
-
-        return view('home');
+  
+        if($request->ajax()) {
        
+             $data = Events::whereDate('start', '>=', $request->start)  
+                      ->whereDate('end',   '<=', $request->end)                  
+                       ->get(['id', 'title', 'start','end']);
+                      
+             return response()->json($data);
+        }
+  
+        return view('home');
     }
 
   
@@ -42,9 +42,9 @@ class EventController extends Controller
            case 'add':
               $event = Events::create([
                 'users_id'=>Auth::user()->id,
-                  'description' => $request->description,
-                  'start_date' => $request->start_date,
-                  'end_date' => $request->end_date,
+                  'title' => $request->title,
+                  'start' => $request->start,
+                  'end' => $request->end,
               ]);
           
               return response()->json($event);
@@ -53,9 +53,9 @@ class EventController extends Controller
            case 'update':
               $event = Events::find($request->id)->update([
                 'users_id'=>$request->users_id,
-                  'description' => $request->description,
-                  'start_date' => $request->start_date,
-                  'end_date' => $request->end_date,
+                  'title' => $request->title,
+                  'start' => $request->start,
+                  'end' => $request->end,
               ]);
      
               return response()->json($event);
