@@ -1,8 +1,7 @@
 <?php
-use Spatie\GoogleCalendar\Event;
 
-use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,27 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-<<<<<<< HEAD
-
-    $event = new Event;
-//  dd($event);
-    $event->name='pay for check ';
-    $event->startDateTime = Carbon\Carbon::now();
-    $event->endDateTime = Carbon\Carbon::now()->addHour();
-    $event->save();
-    $e=Event::get();
-    // dd($e);
-    $userEvent = Event::get();
-    // dd($userEvent );
-     return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::post('/event', [App\Http\Controllers\EventController::class, 'event'])->name('event');
-=======
 <<<<<<< Updated upstream
     return view('welcome');
 });
@@ -70,5 +48,3 @@ Route::get('fullcalender', [EventController::class, 'index'])->name('fullcalende
 
 Route::post('fullcalenderAjax', [EventController::class, 'ajax']);
 
->>>>>>> Stashed changes
->>>>>>> public
