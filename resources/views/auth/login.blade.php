@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
+
 <div class="container">
     <div class="row justify-content-center">
-=======
+
 <style>
     .login-form {
     width: 50%;
@@ -32,7 +32,7 @@
 </style>
 <div class="container">
     <div class="row justify-content-center login-form">
->>>>>>> public
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>

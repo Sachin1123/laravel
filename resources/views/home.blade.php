@@ -55,7 +55,7 @@ var calendar = $('#calendar').fullCalendar({
                                 event.allDay = false;
                         }
                         element.find('.fc-title').append("<br/>" + event.description);
-                        // console.log(event);
+                         console.log(event);
                         
                     },
                     selectable: true,
@@ -146,4 +146,4 @@ function displayMessage(message) {
  
 </script>
   
->>>>>>> public
+

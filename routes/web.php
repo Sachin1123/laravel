@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
 
-    return view('welcome');
-});
 
 Auth::routes();
 Route::get('logout', function ()
@@ -29,8 +26,8 @@ Route::get('logout', function ()
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::post('/event', [App\Http\Controllers\EventController::class, 'event'])->name('event');
-Route::get('fullcalender', [EventController::class, 'index'])->name('fullcalender');
+Route::get('fullcalender', [App\Http\Controllers\EventController::class, 'index'])->name('fullcalender');
 ;
 
-Route::post('fullcalenderAjax', [EventController::class, 'ajax']);
+Route::post('fullcalenderAjax', [App\Http\Controllers\EventController::class, 'ajax']);
 

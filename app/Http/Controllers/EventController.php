@@ -1,11 +1,10 @@
 <?php
-
+namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use \Debugbar;
 use App\Http\Resources\EventResource;
 use App\Models\Events;
-use App\Http\Requests\User\CreateEventRequest;
-use App\Http\Requests\StoreEventRequest;
-use App\Http\Requests\UpdateEventRequest;
+
 use Auth;
 use Spatie\GoogleCalendar\Event;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +20,7 @@ class EventController extends Controller
 
     public function index(Request $request)
     {
- 
+   
         $data = Events::all(); 
         // echo'<pre>'; print_r($event); die;     
         {      
@@ -38,7 +37,7 @@ class EventController extends Controller
   
     public function ajax(Request $request)
     {
-  
+   
         switch ($request->type) {
            case 'add':
               $event = Events::create([
