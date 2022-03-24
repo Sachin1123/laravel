@@ -13,24 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-<<<<<<< Updated upstream
-    return view('welcome');
-});
-=======
 
-//     $event = new Event;
-// //  dd($event);
-//     $event->name='pay for check ';
-//     $event->startDateTime = Carbon\Carbon::now();
-//     $event->endDateTime = Carbon\Carbon::now()->addHour();
-//     $event->save();
-//     $e=Event::get();
-//     // dd($e);
-//     $userEvent = Event::get();
-//     // dd($userEvent );
-     return view('welcome');
-});
 
 Auth::routes();
 Route::get('logout', function ()
