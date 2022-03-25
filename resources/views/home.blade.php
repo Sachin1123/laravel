@@ -70,7 +70,7 @@ var calendar = $('#calendar').fullCalendar({
                             $.ajax({
                                 url: SITEURL + "/fullcalenderAjax",
                                 data: {
-                                    title: title,
+                                    title: title,                                
                                     start: start,
                                     end: end,
                                     type: 'add'
