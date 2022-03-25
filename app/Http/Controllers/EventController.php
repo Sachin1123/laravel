@@ -45,6 +45,7 @@ class EventController extends Controller
                   'title' => $request->title,
                   'start' => $request->start,
                   'end' => $request->end,
+                  'name'=>Auth::user()->name,
               ]);
           
               return response()->json($event);
@@ -62,8 +63,7 @@ class EventController extends Controller
              break;
   
            case 'delete':
-              $event = Events::find($request->id)->delete();
-  
+              $event = Events::find($request->id)->delete();  
               return response()->json($event);
              break;
              

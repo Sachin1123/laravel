@@ -45,17 +45,14 @@ var calendar = $('#calendar').fullCalendar({
   
                     editable: true,                   
                     events:  "/fullcalender",
-                    displayEventTime: true,
+                    displayEventTime: false,
                   
                     eventRender: function (event, element, view) {
                         if (event.allDay === 'true') {
                                 event.allDay = true;
                         } else {
                                 event.allDay = false;
-                        }
-                        // element.find('.fc-title').append("<br/>" + event.description);
-                        
-                 
+                        }             
                         //  console.log(event);
                         
                     },
@@ -119,7 +116,7 @@ var calendar = $('#calendar').fullCalendar({
                                 displayMessage("Event Updated Successfully");
                             }
                         });
-                       
+                      
                     },
                     eventClick: function (event) {
                         var deleteMsg = confirm("Do you really want to delete?");
