@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+
 use \Debugbar;
 use App\Http\Resources\EventResource;
 use App\Models\Events;
@@ -13,6 +15,7 @@ use Calendar;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Redirect,Response;
+use DataTables;
 class EventController extends Controller
 {
 
@@ -27,7 +30,43 @@ class EventController extends Controller
       }
       return view('home');
     }
+   
+
+   public function list(Request $request)
+   {
+    if ($request->ajax()) {
+      $data = Events::with('users');
+    //  echo'<pre>';  print_r('$data'); die;
+      return Datatables::of($data)
+              ->addIndexColumn()
+              ->addColumn('action', function($row){
+
+                     $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+
+                      return $btn;
+              })
+              ->addColumn('name', function($row){
+               
+             if (isset($row->users->name) && !empty($row->users->name)) {
+
+                $name=$row->users->name;
+              }else{
+                $name='';
+              }
+              return $name;
+         })
+              ->rawColumns(['action','name'])
+              ->make(true);
+  }
   
+  return view('list');
+}
+   
+    
+
+
+
+
     public function ajax(Request $request)
     {   
         switch ($request->type) {

@@ -29,4 +29,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::post('/event', [App\Http\Controllers\EventController::class, 'event'])->name('event');
 Route::get('fullcalender',[App\Http\Controllers\EventController::class,'index'])->name('fullcalender');
 Route::post('fullcalenderAjax',[App\Http\Controllers\EventController::class,'ajax']);
-
+Route::get('/list', [App\Http\Controllers\EventController::class, 'list'])->name('list');
