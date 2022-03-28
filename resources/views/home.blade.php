@@ -44,8 +44,7 @@ var calendar = $('#calendar').fullCalendar({
   
             editable: true,                   
             events:  "/fullcalender",
-            displayEventTime: false,
-                  
+            displayEventTime: false,                  
             eventRender: function(event, element, view) {
             if (event.allDay === 'true') {
             event.allDay = true;
@@ -74,7 +73,7 @@ var calendar = $('#calendar').fullCalendar({
             type: "POST",
             success: function (data) 
             {
-            console.log(data);
+            // console.log(data);
             displayMessage("Event Created Successfully");
             location.reload();
             }

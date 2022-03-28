@@ -21,7 +21,8 @@ class EventController extends Controller
       if($request->ajax()) {      
       $data = Events::with('users')->whereDate('start', '>=', $request->start)  
       ->whereDate('end', '<=', $request->end)                  
-      ->get();                
+      ->get();
+      // print_r($data); die;                
       return response()->json($data);
       }
       return view('home');
