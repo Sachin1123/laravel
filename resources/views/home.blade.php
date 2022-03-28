@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,74 +42,63 @@ var calendar = $('#calendar').fullCalendar({
       right: 'month,agendaWeek,agendaDay,listWeek',
     },
   
-                    editable: true,                   
-                    events:  "/fullcalender",
+            editable: true,                   
+            events:  "/fullcalender",
+            displayEventTime: false,
                   
-                    displayEventTime: false,
-                  
-                  eventRender: function cl(event, element, view) {
-                        if (event.allDay === 'true') {
-                                event.allDay = true;
-                        } else {
-                                event.allDay = false;
-                        }
-                   
-                      
-                        element.find('.fc-title').append("<br/>" + event.users.name);          
-                                              
+            eventRender: function cl(event, element, view) {
+            if (event.allDay === 'true') {
+            event.allDay = true;
+            } else {
+            event.allDay = false;
+            }
+            element.find('.fc-title').append("<br/>" + event.users.name);          
+            },                    
+            selectable: true,
+            selectHelper: true,
+            select: function (start, end, allDay) {
+            var title = prompt('Event Title:');
+            //console.log(title);
+            if (title) {
+            var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
+            var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
+            $.ajax({
+            url: SITEURL + "/fullcalenderAjax",
+            data: 
+            {
+                title: title,                                
+                start: start,
+                end: end,
+                type: 'add'
+            },
+            type: "POST",
+            success: function (data) 
+            {
+            console.log(data);
+            displayMessage("Event Created Successfully");
+            location.reload();
+            }
+            });
+            }
+            },
+            eventDrop: function (event, delta) {
+                var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+                var end= $.fullCalendar.formatDate(event.end, "Y-MM-DD");  
+                $.ajax({
+                    url: SITEURL + '/fullcalenderAjax',
+                    data: {
+                        title: event.title,
+                        start: start,
+                        end: end,
+                        id: event.id,
+                        type: 'update'
                     },
-                  
-                    selectable: true,
-                    selectHelper: true,
-                    select: function (start, end, allDay) {
-                        var title = prompt('Event Title:');
-                    //   console.log(title);
-                        if (title) {
                            
-                            var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
-                            var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
-                           
-                            $.ajax({
-                                url: SITEURL + "/fullcalenderAjax",
-                                data: {
-                                    title: title,                                
-                                    start: start,
-                                    end: end,
-                                    type: 'add'
-                                   
-                                },
-                                
-                                
-                                type: "POST",
-                                success: function (data) {
-                                    console.log(data);
-                                displayMessage("Event Created Successfully");
-                                location.reload();
-                                   
-                                }
-                            });
-                          
-                        }
-                    },
-                    eventDrop: function (event, delta) {
-                        var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-                        var end= $.fullCalendar.formatDate(event.end, "Y-MM-DD");
-  
-                        $.ajax({
-                            url: SITEURL + '/fullcalenderAjax',
-                            data: {
-                                title: event.title,
-                                start: start,
-                                end: end,
-                                id: event.id,
-                                type: 'update'
-                            },
-                           
-                            type: "POST",
-                            success: function (response) {
-                                displayMessage("Event Updated Successfully");
-                            }
-                        });
+                    type: "POST",
+                    success: function (response) {
+                    displayMessage("Event Updated Successfully");
+                    }
+                    });
                       
                     },
                     eventClick: function (event) {
