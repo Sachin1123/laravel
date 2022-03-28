@@ -46,7 +46,7 @@ var calendar = $('#calendar').fullCalendar({
             events:  "/fullcalender",
             displayEventTime: false,
                   
-            eventRender: function cl(event, element, view) {
+            eventRender: function(event, element, view) {
             if (event.allDay === 'true') {
             event.allDay = true;
             } else {
