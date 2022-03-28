@@ -45,16 +45,19 @@ var calendar = $('#calendar').fullCalendar({
   
                     editable: true,                   
                     events:  "/fullcalender",
+                  
                     displayEventTime: false,
                   
-                    eventRender: function (event, element, view) {
+                  eventRender: function cl(event, element, view) {
                         if (event.allDay === 'true') {
                                 event.allDay = true;
                         } else {
                                 event.allDay = false;
-                        }             
-                        //  console.log(event);
-                        
+                        }
+                   
+                      
+                        element.find('.fc-title').append("<br/>" + event.users.name);          
+                                              
                     },
                   
                     selectable: true,
@@ -80,18 +83,10 @@ var calendar = $('#calendar').fullCalendar({
                                 
                                 type: "POST",
                                 success: function (data) {
+                                    console.log(data);
                                 displayMessage("Event Created Successfully");
-                            
-                                    calendar.fullCalendar('renderEvent',
-                                        {
-                                            id: data.id,
-                                            title: title,
-                                            start: start,
-                                            end: end,
-                                            allDay: allDay
-                                        },true);
-  
-                                    calendar.fullCalendar('unselect');
+                                location.reload();
+                                   
                                 }
                             });
                           
@@ -147,4 +142,3 @@ function displayMessage(message) {
  
 </script>
   
-
